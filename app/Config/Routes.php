@@ -13,4 +13,5 @@ $routes->get('/tambah', 'Auth::tambah');
 $routes->post('/tambah', 'Auth::processTambah');
 $routes->get('/ubah/(:num)', 'Auth::edit/$1');
 $routes->post('/ubah/(:num)', 'Auth::processEdit/$1');
-$routes->get('/cetak/(:num)', 'PrintGen::cetak/$1');
+// $routes->get('/cetak/(:num)', 'PrintGen::cetak/$1');
+$routes->get('/pdf', 'PrintGen::cetak');

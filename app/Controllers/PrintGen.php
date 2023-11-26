@@ -35,7 +35,13 @@ class PrintGen extends BaseController
         $name = $data['results'][0]->name;
         $npm = $data['results'][0]->npm;
         $ttl = $data['results'][0]->ttl;
-        $desc = "Adalah benar Asisten di Laboratorium Psikologi ". $data['results'][0]->lab_name ."\n\nPraktikum ". $data['results'][0]->praktikum ." Fakultas Psikologi Universitas Gunadarma\n\npada Semester ". $data['results'][0]->period ;
+
+        // biar rapih aja paragrafnya dicek jumlah kata trus kasih logic newlinenya biar beda
+        if(strlen($data['results'][0]->praktikum) > 45){
+            $desc = "Adalah benar Asisten di Laboratorium Psikologi ". $data['results'][0]->lab_name ."\n\nPraktikum ". $data['results'][0]->praktikum ." Fakultas Psikologi\n\nUniversitas Gunadarma pada Semester ". $data['results'][0]->period ;
+        }else{
+            $desc = "Adalah benar Asisten di Laboratorium Psikologi ". $data['results'][0]->lab_name ."\n\nPraktikum ". $data['results'][0]->praktikum ." Fakultas Psikologi Universitas Gunadarma\n\npada Semester ". $data['results'][0]->period ;
+        }
 
         imagettftext($image, 40, 0, 1070, 1580, $textColour, $font, $name);
         imagettftext($image, 40, 0, 1070, 1680, $textColour, $font, $npm);

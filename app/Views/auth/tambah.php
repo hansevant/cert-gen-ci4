@@ -95,14 +95,19 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Tambah Data Banyak</h4>
-                  <form class="forms-sample">
+                  <form class="forms-sample" method="post" action="<?= base_url('/upload') ?>" enctype="multipart/form-data">
                     <div class="form-group">
                       <label>File upload</label>
-                      <input type="file" name="img[]" class="form-control p-2">
+                      <input class="form-control p-2" type="file" name="excel_file" id="excel_file" accept=".xlsx, .xls" required>
                     </div>
                     <p class="card-description">
-                    Contoh format harus<code>.csv</code>seperti <a href="">disini</a>
-                    </p>
+                    Contoh format harus<code>.xls / .xlsx</code>seperti <a href="<?= base_url('/templates/Book1.xlsx')?>" download>disini</a>
+                    <ul>
+                      <li>Lab 1 : Dasar</li>
+                      <li>Lab 2 : Menengah</li>
+                      <li>Lab 3 : Lanjut</li>
+                    </ul>
+                  </p>
                     <button type="submit" class="btn btn-primary me-2" name="submit">Submit</button>
                   </form>
                 </div>
@@ -110,6 +115,9 @@
             </div>
           </div>
         </div>
+        <?php if(session()->getFlashdata('pesanmasuk')){?>
+                  <script>alert("<?php echo session()->getFlashdata('pesanmasuk')?>")</script>
+                <?php } ?>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
           <?= view('template/footer')?>

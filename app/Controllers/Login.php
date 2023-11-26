@@ -27,7 +27,7 @@ class Login extends BaseController
 
         // cek apakah sudah ada sesi blm
         if(session()->get('session')){
-            return redirect()->to('a');
+            return redirect()->to('/lab');
         }
 
         return view('login', $randomQuestion);
@@ -51,6 +51,6 @@ class Login extends BaseController
         // bila berhasil melewati tahap diatas lalu bikin sesi
         session()->set('session', 'Maniezz');
         session()->setFlashdata('success', 'Benarr!!');
-        return redirect()->to('a');
+        return redirect()->to('/lab');
     }
 }

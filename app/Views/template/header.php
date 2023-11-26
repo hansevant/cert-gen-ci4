@@ -41,10 +41,10 @@
           </button>
         </div>
         <div>
-          <a class="navbar-brand brand-logo" href="/a">
+          <a class="navbar-brand brand-logo" href="#">
             <img src="<?= base_url('StarAdmin/images/logo.svg')?>" alt="logo" />
           </a>
-          <a class="navbar-brand brand-logo-mini" href="/a">
+          <a class="navbar-brand brand-logo-mini" href="#">
             <img src="<?= base_url('StarAdmin/images/logo-mini.svg')?>" alt="logo" />
           </a>
         </div>

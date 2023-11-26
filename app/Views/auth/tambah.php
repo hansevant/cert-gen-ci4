@@ -6,9 +6,9 @@
             <div class="col-md-8 grid-margin ">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Tambah Data</h4>
+                  <h4 class="card-title">Tambah Data Satuan</h4>
                   <p class="card-description">
-                   Satuan
+                   Semua Kolom Wajib Diisi
                   </p>
                   <form class="forms-sample" action="" method="POST">
                     <div class="row">
@@ -94,15 +94,15 @@
             <div class="col-md-4 grid-margin ">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Tambah Data</h4>
-                  <p class="card-description">
-                    Sekaligus
-                  </p>
+                  <h4 class="card-title">Tambah Data Banyak</h4>
                   <form class="forms-sample">
                     <div class="form-group">
                       <label>File upload</label>
                       <input type="file" name="img[]" class="form-control p-2">
                     </div>
+                    <p class="card-description">
+                    Contoh format harus<code>.csv</code>seperti <a href="">disini</a>
+                    </p>
                     <button type="submit" class="btn btn-primary me-2" name="submit">Submit</button>
                   </form>
                 </div>

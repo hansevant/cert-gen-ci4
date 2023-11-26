@@ -49,7 +49,7 @@ class Login extends BaseController
         } 
 
         // bila berhasil melewati tahap diatas lalu bikin sesi
-        session()->set('session', 'Admin');
+        session()->set('session', 'Maniezz');
         session()->setFlashdata('success', 'Benarr!!');
         return redirect()->to('a');
     }

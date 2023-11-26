@@ -9,10 +9,8 @@ class House extends BaseController
         if(!session()->get('session')){
             return redirect()->to('');
         }
-        $ModelLabs = new \App\Models\ModelLabs();
-        $data['result'] = $ModelLabs->findAll();
 
-        return view('auth/index', $data);
+        return view('auth/index');
     }
 
 }

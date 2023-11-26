@@ -41,10 +41,10 @@
           </button>
         </div>
         <div>
-          <a class="navbar-brand brand-logo" href="index.html">
+          <a class="navbar-brand brand-logo" href="/a">
             <img src="<?= base_url('StarAdmin/images/logo.svg')?>" alt="logo" />
           </a>
-          <a class="navbar-brand brand-logo-mini" href="index.html">
+          <a class="navbar-brand brand-logo-mini" href="/a">
             <img src="<?= base_url('StarAdmin/images/logo-mini.svg')?>" alt="logo" />
           </a>
         </div>
@@ -57,39 +57,6 @@
           </li>
         </ul>
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item dropdown d-none d-lg-block">
-            <a class="nav-link dropdown-bordered dropdown-toggle dropdown-toggle-split" id="messageDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false"> Select Category </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="messageDropdown">
-              <a class="dropdown-item py-3" >
-                <p class="mb-0 font-weight-medium float-left">Select category</p>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item preview-item">
-                <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">Bootstrap Bundle </p>
-                  <p class="fw-light small-text mb-0">This is a Bundle featuring 16 unique dashboards</p>
-                </div>
-              </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">Angular Bundle</p>
-                  <p class="fw-light small-text mb-0">Everything you’ll ever need for your Angular projects</p>
-                </div>
-              </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">VUE Bundle</p>
-                  <p class="fw-light small-text mb-0">Bundle of 6 Premium Vue Admin Dashboard</p>
-                </div>
-              </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">React Bundle</p>
-                  <p class="fw-light small-text mb-0">Bundle of 8 Premium React Admin Dashboard</p>
-                </div>
-              </a>
-            </div>
-          </li>
           <li class="nav-item d-none d-lg-block">
             <div id="datepicker-popup" class="input-group date datepicker navbar-date-picker">
               <span class="input-group-addon input-group-prepend border-right">
@@ -99,9 +66,6 @@
             </div>
           </li>
 
-          <li class="nav-item dropdown">
-            <a href="<?= site_url('')?>?logout=1" class="nav-link text-primary"><h5>Log Out</h5></a>
-          </li>
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-bs-toggle="offcanvas">
           <span class="mdi mdi-menu"></span>
@@ -122,15 +86,19 @@
               <span class="menu-title">Tambah Data</span>
             </a>
           </li>
-          <li class="nav-item nav-category">UI Elements</li>
-          <?php foreach ($result as $row): ?>
-            <li class="nav-item">
+          <li class="nav-item">
             <a class="nav-link" href="/lab">
               <i class="mdi mdi-city menu-icon"></i>
-              <span class="menu-title">Lab <?= $row['lab_name']?></span>
+              <span class="menu-title">Lab</span>
             </a>
           </li>
-          <?php endforeach; ?>
+          <li class="nav-item nav-category">Keluar</li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?= site_url('')?>?logout=1" class="nav-link text-primary">
+              <i class="mdi mdi-exit-to-app menu-icon"></i>
+              <span class="menu-title">Log Out</span>
+            </a>
+          </li>
           
         </ul>
       </nav>

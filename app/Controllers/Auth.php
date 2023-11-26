@@ -39,24 +39,27 @@ class Auth extends BaseController
 
         $model->insertData($data);
 
-        session()->setFlashdata('pesantambah', 'data baru berhasil ditambahkan!');
+        session()->setFlashdata('pesanmasuk', 'data baru berhasil ditambahkan!');
 
-        return redirect()->to('/a');
+        return redirect()->to('/lab');
     }
 
-    public function lab()
+    public function lab($labId = 0)
     {
         if(!session()->get('session')){
             return redirect()->to('');
         }
-        $ModelLabs = new ModelLabs();
-        $data['result'] = $ModelLabs->findAll();
+        // $ModelLabs = new ModelLabs();
+        // $data['result'] = $ModelLabs->findAll();
         
         $model = new ModelUsers();
         $builder = $model->join('labs', 'labs.lab_id = users.lab_id');
         $builder ->select('*');
+        if($labId){
+            $builder ->where('users.lab_id', $labId);
+        }
 
-        $data['data'] = $builder->get()->getResult();
+        $data['data'] = $builder->orderBy('name', 'ASC')->get()->getResult();
 
         return view('auth/lab', $data);
     }
@@ -100,8 +103,22 @@ class Auth extends BaseController
         ];
         $model->update($userId, $data);
         
-        session()->setFlashdata('pesantambah', 'data baru berhasil diedit!');
+        session()->setFlashdata('pesanmasuk', 'data baru berhasil diedit!');
 
-        return redirect()->to('/a');
+        return redirect()->to('/lab');
+    }
+
+    public function delete($userId)
+    {
+        $model = new ModelUsers();
+        $model->delete($userId);
+        return redirect()->back();
+    }
+
+    public function deleteAll()
+    {
+        $model = new ModelUsers();
+        $model->truncate();
+        return redirect()->back();
     }
 }

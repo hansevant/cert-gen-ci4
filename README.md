@@ -9,6 +9,7 @@ mysql
 mpdf
 bootstrap
 starAdmin
+PHPspreadsheet
 
 ## Installation 
 

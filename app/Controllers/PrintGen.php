@@ -35,12 +35,15 @@ class PrintGen extends BaseController
         $name = $data['results'][0]->name;
         $npm = $data['results'][0]->npm;
         $ttl = $data['results'][0]->ttl;
+        $lab_name = $data['results'][0]->lab_name;
+        $praktikum = $data['results'][0]->praktikum;
+        $period = $data['results'][0]->period;
 
         // biar rapih aja paragrafnya dicek jumlah kata trus kasih logic newlinenya biar beda
-        if(strlen($data['results'][0]->praktikum) > 45){
-            $desc = "Adalah benar Asisten di Laboratorium Psikologi ". $data['results'][0]->lab_name ."\n\nPraktikum ". $data['results'][0]->praktikum ." Fakultas Psikologi\n\nUniversitas Gunadarma pada Semester ". $data['results'][0]->period ;
+        if(strlen($praktikum) > 45){
+            $desc = "Adalah benar Asisten di Laboratorium Psikologi ". $lab_name ."\n\nPraktikum ". $praktikum ." Fakultas Psikologi\n\nUniversitas Gunadarma pada Semester ". $period ;
         }else{
-            $desc = "Adalah benar Asisten di Laboratorium Psikologi ". $data['results'][0]->lab_name ."\n\nPraktikum ". $data['results'][0]->praktikum ." Fakultas Psikologi Universitas Gunadarma\n\npada Semester ". $data['results'][0]->period ;
+            $desc = "Adalah benar Asisten di Laboratorium Psikologi ". $lab_name ."\n\nPraktikum ". $praktikum ." Fakultas Psikologi Universitas Gunadarma\n\npada Semester ". $period ;
         }
 
         imagettftext($image, 40, 0, 1070, 1580, $textColour, $font, $name);
@@ -143,13 +146,17 @@ class PrintGen extends BaseController
         $cert = $data['results'][0]->cert;
         $name = $data['results'][0]->name;
         $npm = $data['results'][0]->npm;
-        $ttl = $data['results'][0]->ttl;
-        $desc = "Atas partisipasinya sebagai ". $data['results'][0]->role ."\n\nLaboratorium Psikologi ". $data['results'][0]->lab_name ."\n\nUniversitas Gunadarma\n\n". $data['results'][0]->period ;
+        $lab_name = $data['results'][0]->lab_name;
+        $role =  $data['results'][0]->role;
+        $period = $data['results'][0]->period;
+
+        $desc = "Atas partisipasinya sebagai ". $role ."\n\nLaboratorium Psikologi ". $lab_name ."\n\nUniversitas Gunadarma\n\n". $period ;
 
         // Add additional name using imagettftext
         $textColour = imagecolorallocate($image, 0, 0, 0); // RGB color
         $imageWidth = imagesx($image);
-        
+        // $imageHeight = imagesy($image);
+
         // Ukuran font dan teks yang akan ditampilkan
         $fontSize = 100;
         $angle = 0; // Sudut teks (dalam derajat)
@@ -157,6 +164,7 @@ class PrintGen extends BaseController
         // Mendapatkan koordinat teks agar rata tengah
         $fontBoundingBox = imagettfbbox($fontSize, $angle, $font2, $name);
         $textWidth = $fontBoundingBox[4] - $fontBoundingBox[0];
+        // $textHeight = $fontBoundingBox[1] - $fontBoundingBox[5];
         
         $x = ($imageWidth - $textWidth) / 2;
         // $y = ($imageHeight - $textHeight) / 2;
@@ -181,11 +189,11 @@ class PrintGen extends BaseController
         // Add additional desc using mPDF
         $pdf->SetFont($font, '', 18);
         $pdf->SetXY(10, 115); // Adjust X, Y position as needed
-        $pdf->MultiCell(0, 4, $desc, 0, 'C');
+        $pdf->MultiCell(0, 4.4, $desc, 0, 'C');
 
-        // Add additional sk using mPDF
+        // Add additional cert using mPDF
         $pdf->SetFont($font, '', 16);
-        $pdf->SetXY(7, 47.5); // Adjust X, Y position as needed
+        $pdf->SetXY(11, 47.5); // Adjust X, Y position as needed
         $pdf->MultiCell(0, 4, $cert, 0, 'C');
 
         $time = "Depok, " . date('d F Y');
@@ -230,7 +238,7 @@ class PrintGen extends BaseController
         $response = $this->response
             ->setStatusCode(200)
             ->setContentType('application/pdf')
-            ->setHeader('Content-Disposition', 'inline; filename="' . $name . ' - SK.pdf"')
+            ->setHeader('Content-Disposition', 'inline; filename="' . $name . ' - Certif.pdf"')
             ->setBody(file_get_contents($pdfFileName));
 
         return $response;

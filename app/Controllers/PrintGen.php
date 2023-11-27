@@ -83,7 +83,7 @@ class PrintGen extends BaseController
         }
         $pdf->SetFont($font, '', 12, false,);
         $pdf->SetXY(125, 272); // Adjust X, Y position as needed
-        $pdf->WriteCell(0, 4, $kepala_lab, 0, 'C');
+        $pdf->WriteCell(0, 4, $kepala_lab, 0, 0, 'C');
 
         if($data['results'][0]->lab_id == 1){
             $lab = "Kepala Laboratorium Psikologi Dasar";
@@ -97,7 +97,7 @@ class PrintGen extends BaseController
         $pdf->SetFont($font, '', 12, false,);
         $pdf->SetXY(120, 279); // Adjust X, Y position as needed
         $pdf->SetAutoPageBreak(false);
-        $pdf->WriteCell(0, 4, $lab, 0, 'C');
+        $pdf->WriteCell(0, 4, $lab, 0,0, 'C');
         
         
         $pdfFileName = WRITEPATH . 'uploads/' . $name . ".pdf";

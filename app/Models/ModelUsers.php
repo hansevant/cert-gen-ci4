@@ -8,7 +8,7 @@ class ModelUsers extends Model {
     protected $table = 'users';
     protected $primaryKey = 'user_id';
 
-    protected $allowedFields = ['lab_id', 'period', 'cert', 'sk', 'name', 'npm', 'ttl', 'role', 'praktikum'];
+    protected $allowedFields = ['lab_id', 'period', 'cert', 'alamat', 'sk', 'name', 'npm', 'ttl', 'role', 'praktikum'];
 
     public function insertData($data)
     {

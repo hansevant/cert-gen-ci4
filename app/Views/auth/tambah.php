@@ -7,9 +7,6 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Tambah Data Satuan</h4>
-                  <p class="card-description">
-                   Semua Kolom Wajib Diisi
-                  </p>
                   <form class="forms-sample" action="" method="POST">
                     <div class="row">
                       <div class="col-6">
@@ -52,6 +49,15 @@
                         <div class="form-group">
                           <label for="ttl">Tempat Tanggal Lahir</label>
                           <input type="text" class="form-control" id="ttl" placeholder="Jakarta, 06 Oktober 2001" name="ttl" required>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="form-group">
+                          <label for="alamat">Alamat</label>
+                          <input type="text" class="form-control" id="alamat" placeholder="Jl. Margonda Raya No.100 Beji Kota Depok" name="alamat" required>
                         </div>
                       </div>
                     </div>

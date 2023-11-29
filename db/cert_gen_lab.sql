@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2023 at 03:05 PM
+-- Generation Time: Nov 29, 2023 at 07:53 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -56,6 +56,7 @@ CREATE TABLE `users` (
   `name` varchar(255) NOT NULL,
   `npm` int(8) NOT NULL,
   `ttl` varchar(255) NOT NULL,
+  `alamat` varchar(255) NOT NULL,
   `role` varchar(255) NOT NULL,
   `praktikum` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -64,8 +65,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `lab_id`, `period`, `cert`, `sk`, `name`, `npm`, `ttl`, `role`, `praktikum`) VALUES
-(2, 3, 'ATA 2022/2023', 'xxx', 'xxx', 'El Rumi Athalla', 21120152, 'Cibinong, 2 November 2999', 'Sekretaris Asisten', 'Kognitif');
+INSERT INTO `users` (`user_id`, `lab_id`, `period`, `cert`, `sk`, `name`, `npm`, `ttl`, `alamat`, `role`, `praktikum`) VALUES
+(1, 3, 'ATA 2021/2022', '2.02-002/UG-FPSI/LAB/VIII/2023', '2.01-006/UG-FPSI/LAB/VIII/2023', 'El Rumi Athalla', 12119741, 'Cibinong, 06 Oktober 2999', 'Perum Mutiara Gading Timur Blok G9 No 5, RT 006/RW 033, Kel Mustika Jaya, Kec Mustika Jaya, Kota Bekasi', 'Programmer', 'Metode Pengukuran Inteligensi');
 
 --
 -- Indexes for dumped tables
@@ -98,7 +99,7 @@ ALTER TABLE `labs`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables

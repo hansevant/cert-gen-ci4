@@ -33,21 +33,22 @@ class PrintGen extends BaseController
         $textColour = imagecolorallocate($image, 0, 0, 0); // RGB color
         $sk = $data['results'][0]->sk;
         $name = $data['results'][0]->name;
-        $npm = $data['results'][0]->npm;
+        $alamat = $data['results'][0]->alamat;
         $ttl = $data['results'][0]->ttl;
         $lab_name = $data['results'][0]->lab_name;
         $praktikum = $data['results'][0]->praktikum;
         $period = $data['results'][0]->period;
+        $role =  $data['results'][0]->role;
 
         // biar rapih aja paragrafnya dicek jumlah kata trus kasih logic newlinenya biar beda
         if(strlen($praktikum) > 45){
-            $desc = "Adalah benar Asisten di Laboratorium Psikologi ". $lab_name ."\n\nPraktikum ". $praktikum ." Fakultas Psikologi\n\nUniversitas Gunadarma pada Semester ". $period ;
+            $desc = "Adalah benar ". $role ." di Laboratorium Psikologi ". $lab_name ."\n\nPraktikum ". $praktikum ." Fakultas Psikologi\n\nUniversitas Gunadarma pada Semester ". $period ;
         }else{
-            $desc = "Adalah benar Asisten di Laboratorium Psikologi ". $lab_name ."\n\nPraktikum ". $praktikum ." Fakultas Psikologi Universitas Gunadarma\n\npada Semester ". $period ;
+            $desc = "Adalah benar ". $role ." di Laboratorium Psikologi ". $lab_name ."\n\nPraktikum ". $praktikum ." Fakultas Psikologi Universitas Gunadarma\n\npada Semester ". $period ;
         }
 
         imagettftext($image, 40, 0, 1070, 1580, $textColour, $font, $name);
-        imagettftext($image, 40, 0, 1070, 1680, $textColour, $font, $npm);
+        imagettftext($image, 40, 0, 1070, 1680, $textColour, $font, substr($alamat, 0 ,45)); //motong alamat
         imagettftext($image, 40, 0, 1070, 1790, $textColour, $font, $ttl);
 
         // Save the image to a temporary file
@@ -60,16 +61,22 @@ class PrintGen extends BaseController
         $pdf->Image($imageFileName, 0, 0, 210, 297, 'png', '', true, false);
         $pdf->SetMargins(10, 10, 10);
 
+        // Add additional alamat using mPDF (backup kalau mau dikasih spasi kebawah)
+        // $pdf->SetFont($font, '', 14);
+        // $pdf->SetXY(93.5, 145); // Adjust X, Y position as needed
+        // $pdf->WriteCell(0, 4, substr($alamat, 0,44), 0,);
+
         // Add additional desc using mPDF
         $pdf->SetFont($font, '', 14);
         $pdf->SetXY(7, 175); // Adjust X, Y position as needed
         $pdf->MultiCell(0, 4, $desc, 0, 'C');
 
-        // Add additional sk using mPDF
+        // Add additional no sk using mPDF
         $pdf->SetFont($font, '', 16);
         $pdf->SetXY(7, 111); // Adjust X, Y position as needed
         $pdf->MultiCell(0, 4, $sk, 0, 'C');
 
+        // Add additional date using mPDF
         $time = "Depok, " . date('d F Y');
         $pdf->SetFont($font, '', 12);
         $pdf->SetXY(135, 235); // Adjust X, Y position as needed
@@ -84,6 +91,7 @@ class PrintGen extends BaseController
         } else{
             $kepala_lab = "Unknown";
         }
+        // Add additional Kepala lab using mPDF
         $pdf->SetFont($font, '', 12, false,);
         $pdf->SetXY(125, 272); // Adjust X, Y position as needed
         $pdf->WriteCell(0, 4, $kepala_lab, 0, 0, 'C');
@@ -97,12 +105,13 @@ class PrintGen extends BaseController
         } else{
             $kepala_lab = "Unknown";
         }
+        // Add additional nama lab using mPDF
         $pdf->SetFont($font, '', 12, false,);
         $pdf->SetXY(120, 279); // Adjust X, Y position as needed
         $pdf->SetAutoPageBreak(false);
         $pdf->WriteCell(0, 4, $lab, 0,0, 'C');
         
-        
+        // ???
         $pdfFileName = WRITEPATH . 'uploads/' . $name . ".pdf";
         $pdf->Output($pdfFileName, 'F');
 
@@ -191,11 +200,12 @@ class PrintGen extends BaseController
         $pdf->SetXY(10, 115); // Adjust X, Y position as needed
         $pdf->MultiCell(0, 4.4, $desc, 0, 'C');
 
-        // Add additional cert using mPDF
+        // Add additional no cert using mPDF
         $pdf->SetFont($font, '', 16);
         $pdf->SetXY(11, 47.5); // Adjust X, Y position as needed
         $pdf->MultiCell(0, 4, $cert, 0, 'C');
 
+        // Add additional date using mPDF
         $time = "Depok, " . date('d F Y');
         $pdf->SetFont($font, '', 14);
         $pdf->SetXY(155, 155); // Adjust X, Y position as needed
@@ -210,6 +220,7 @@ class PrintGen extends BaseController
         } else{
             $kepala_lab = "Unknown";
         }
+        // Add additional lab head using mPDF
         $pdf->SetFont($font, '', 14, false,);
         $pdf->SetXY(155, 184); // Adjust X, Y position as needed
         $pdf->WriteCell(0, 4, $kepala_lab, 0, 0,'C');
@@ -223,11 +234,13 @@ class PrintGen extends BaseController
         } else{
             $kepala_lab = "Unknown";
         }
+        // Add additional lab name using mPDF
         $pdf->SetFont($font, '', 14, false,);
         $pdf->SetXY(155, 191); // Adjust X, Y position as needed
         $pdf->SetAutoPageBreak(false);
         $pdf->WriteCell(0, 4, $lab, 0, 0, 'C');
         
+        // ???
         $pdfFileName = WRITEPATH . 'uploads/' . $name . ".pdf";
         $pdf->Output($pdfFileName, 'F');
 

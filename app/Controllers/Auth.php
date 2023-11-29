@@ -59,10 +59,11 @@ class Auth extends BaseController
                     'name' => $row[3],
                     'npm' => $row[4],
                     'ttl' => $row[5],
-                    'cert' => $row[6],
-                    'sk' => $row[7],
-                    'praktikum' => $row[8],
-                    'period' => $row[9],
+                    'alamat' => $row[6],
+                    'cert' => $row[7],
+                    'sk' => $row[8],
+                    'praktikum' => $row[9],
+                    'period' => $row[10],
                 ];
 
                 // cek apakah lab_id nya benar semua jika tidak error
@@ -98,6 +99,7 @@ class Auth extends BaseController
             'name' =>  $this->request->getVar('name'),
             'npm' =>  $this->request->getVar('npm'),
             'ttl' =>  $this->request->getVar('ttl'),
+            'alamat' =>  $this->request->getVar('alamat'),
             'role' =>  $this->request->getVar('role'),
             'praktikum' =>  $this->request->getVar('praktikum'),
         ];
@@ -162,6 +164,7 @@ class Auth extends BaseController
             'name' =>  $this->request->getVar('name'),
             'npm' =>  $this->request->getVar('npm'),
             'ttl' =>  $this->request->getVar('ttl'),
+            'alamat' =>  $this->request->getVar('alamat'),
             'role' =>  $this->request->getVar('role'),
             'praktikum' =>  $this->request->getVar('praktikum'),
         ];

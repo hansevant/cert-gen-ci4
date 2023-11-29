@@ -57,6 +57,15 @@
                         </div>
                       </div>
                     </div>
+                    
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="form-group">
+                          <label for="alamat">Alamat</label>
+                          <input type="text" value="<?= $results[0]->alamat ?>" class="form-control" id="alamat" placeholder="Jl. Margonda Raya No.100 Beji Kota Depok" name="alamat" required>
+                        </div>
+                      </div>
+                    </div>
 
                     <div class="row">
                       <div class="col-6">

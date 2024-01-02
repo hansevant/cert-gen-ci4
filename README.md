@@ -17,7 +17,7 @@ Creator : Hans Evan Tatipata
 
 lalu running deh bisa pakai `php spark serve` atau yang lain
 
-dan jangan lupa import databasenya
+dan jangan lupa import databasenya dan run db servernya
 
 ## Others
 
